@@ -1,0 +1,16 @@
+# Virtual env
+venv/
+env/
+.venv/
+
+# Python / Pycache
+__pycache__/
+*.pyc
+
+# Local datafiles and agent's output
+output/
+*.xlsx
+*.csv
+
+# Env variables
+.env
