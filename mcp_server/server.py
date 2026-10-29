@@ -3,13 +3,13 @@ MCP Server for DocFlow Agent.
 Exposes standard tools for file management and structured Excel report generation.
 """
 
-from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 import pandas as pd
 import os
 from pathlib import Path
 
 # Initialize the FastMCP server
-mcp = FastMCP("DocFlow Excel Server")
+mcp = MCPServer("DocFlow Excel Server")
 
 # Define output path for the processed Excel file
 EXCEL_PATH = Path("./output/processed_invoices.xlsx")
