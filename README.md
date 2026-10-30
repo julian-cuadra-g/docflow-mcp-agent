@@ -66,7 +66,7 @@ docflow-mcp-agent/
 
 ```bash
 # Clone repository
-git clone https://github.com/YOUR_USERNAME/docflow-mcp-agent.git
+git clone https://github.com/julian-cuadra-g/docflow-mcp-agent.git
 cd docflow-mcp-agent
 
 # Create and activate virtual environment
