@@ -39,7 +39,7 @@ async def run_docflow_agent():
     4. Initializes vLLM local model with tool calling support.
     5. Compiles and executes the LangGraph agent workflow.
     """
-    pdf_file_path = Path("sample_data/google202604.pdf")
+    pdf_file_path = Path("sample_data/invoice.pdf")
 
     if not pdf_file_path.exists():
         print(f"Error: The file {pdf_file_path} was not found. Please place an invoice.pdf inside the sample_data/ folder.")
