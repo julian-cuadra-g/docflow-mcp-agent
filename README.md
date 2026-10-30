@@ -2,7 +2,7 @@
 
 An intelligent, fully autonomous local document management agent designed to process real invoice PDFs, extract structured financial metadata using a locally hosted LLM, and update an Excel report via custom Model Context Protocol (MCP) tools.
 
-## 🏗️ System Architecture
+## 🏗️ System architecture
 
 The project leverages a decoupled, local-first architecture built across three main layers:
 
@@ -16,28 +16,28 @@ The project leverages a decoupled, local-first architecture built across three m
 [ Docker Container: vLLM + Qwen2.5-7B ]
 ```
 
-## 🧩 Core Components & Design
+## 🧩 Core components & design
 
-### 1. Model Layer (vLLM Engine)
+### 1. Model layer (vLLM Engine)
 
 * **Containerized Inference:** Runs inside a Docker container configured with GPU passthrough to leverage local hardware (such as NVIDIA RTX series).
 * **Model:** `Qwen/Qwen2.5-7B-Instruct`, optimized for instruction following and structured outputs.
 * **API Compatibility:** Exposes an OpenAI-compatible HTTP interface at `http://localhost:8000/v1`.
 * **Tool Calling:** Configured with `--enable-auto-tool-choice` and `--tool-call-parser hermes` to support standard function calling.
 
-### 2. Tools Layer (MCP Server)
+### 2. Tools layer (MCP Server)
 
 * **Model Context Protocol (MCP):** Implements the official Python MCP SDK (`FastMCP`) to expose standard executable tools.
 * **Decoupled Logic:** The agent discovers tools dynamically over standard input/output (`stdio`) without hardcoded tool implementations inside the agent script.
 * **Excel Writer:** The `append_invoice_to_excel` tool parses incoming structured parameters (Provider, Tax ID, Date, Subtotal, VAT, Total) using `pandas` and `openpyxl`, maintaining persistent record logs.
 
-### 3. Orchestration Layer (LangGraph & LangChain)
+### 3. Orchestration layer (LangGraph & LangChain)
 
-* **State Machine:** Uses `StateGraph` to define a deterministic loop (*Agent Reasoning* ➔ *Tool Execution* ➔ *Response Synthesis*).
-* **PDF Extraction:** Integrates `pypdf` to extract raw text content from PDF invoices placed in `sample_data/invoice.pdf`.
-* **Pydantic Validation:** Formats extracted details cleanly before passing them to the tool call.
+* **State machine:** Uses `StateGraph` to define a deterministic loop (*Agent Reasoning* ➔ *Tool Execution* ➔ *Response Synthesis*).
+* **PDF extraction:** Integrates `pypdf` to extract raw text content from PDF invoices placed in `sample_data/invoice.pdf`.
+* **Pydantic validation:** Formats extracted details cleanly before passing them to the tool call.
 
-## 📁 Repository Structure
+## 📁 Repository structure
 
 ```
 docflow-mcp-agent/
@@ -54,7 +54,7 @@ docflow-mcp-agent/
 └── output/                  # Generated Excel reports (processed_invoices.xlsx)
 ```
 
-## 🚀 Getting Started
+## 🚀 Getting started
 
 ### Prerequisites
 
@@ -62,7 +62,7 @@ docflow-mcp-agent/
 * Python 3.10+
 * Git
 
-### 1. Clone & Set Up Python Environment
+### 1. Clone & setup Python environment
 
 ```bash
 # Clone repository
@@ -79,7 +79,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 2. Start vLLM Local Server via Docker
+### 2. Start vLLM local server via Docker
 
 ```bash
 docker compose up -d
@@ -91,7 +91,7 @@ Verify that the local server is running by querying the available models:
 curl.exe http://localhost:8000/v1/models
 ```
 
-### 3. Run the Agent
+### 3. Run the agent
 
 Place an invoice named `invoice.pdf` inside the `sample_data/` directory and execute the main agent script:
 
