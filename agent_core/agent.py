@@ -14,7 +14,7 @@ from langgraph.prebuilt import ToolNode
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from langchain_mcp_adapters.tools import load_mcp_tools
-from agent_core.schemas import InvoiceSchema
+from schemas import InvoiceSchema
 
 
 # Define the state of our LangGraph agent
@@ -46,7 +46,7 @@ async def run_docflow_agent(invoice_text: str):
 
             # 2. Initialize local LLM via vLLM (OpenAI-compatible local endpoint)
             llm = ChatOpenAI(
-                model="Qwen/Qwen2.5-7B-Instruct",  # Or your loaded local model in vLLM
+                model="qwen2.5-7b-instruct",  # Or your loaded local model in vLLM
                 openai_api_base="http://localhost:8000/v1",
                 openai_api_key="not-needed-for-local",
                 temperature=0.0
