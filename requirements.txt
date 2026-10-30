@@ -15,5 +15,7 @@ pydantic>=2.0.0
 # Environment vars and utils
 python-dotenv>=1.0.0
 
+# PDF
+pypdf>=4.0.0
 
 
